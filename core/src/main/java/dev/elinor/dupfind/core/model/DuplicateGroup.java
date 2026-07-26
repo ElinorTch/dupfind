@@ -1,4 +1,6 @@
 package dev.elinor.dupfind.core.model;
 
-public record DuplicateGroup() {
+import java.util.List;
+
+public record DuplicateGroup(String hash, List<FileEntry> files) {
 }

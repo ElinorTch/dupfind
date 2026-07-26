@@ -1,4 +1,6 @@
 package dev.elinor.dupfind.core.model;
 
-public record ScanResult() {
+import java.util.List;
+
+public record ScanResult(List<DuplicateGroup> groups, int filesScanned, int errors) {
 }

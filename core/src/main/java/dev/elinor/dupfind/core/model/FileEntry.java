@@ -1,4 +1,6 @@
 package dev.elinor.dupfind.core.model;
 
-public record FileEntry() {
+import java.nio.file.Path;
+
+public record FileEntry(Path path, long size) {
 }
