@@ -11,4 +11,4 @@ plugins {
 }
 
 rootProject.name = "dupfind"
-include("app")
+include("app", "core")
