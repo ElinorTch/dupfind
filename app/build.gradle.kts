@@ -17,10 +17,10 @@ repositories {
 }
 
 dependencies {
-    implementation("info.picocli:picocli:4.7.6")
-    annotationProcessor("info.picocli:picocli-codegen:4.7.6")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.11.0")
-    testImplementation("org.assertj:assertj-core:3.27.7")
+    implementation(libs.picocli)
+    annotationProcessor(libs.picocli.codegen)
+    testImplementation(libs.junit)
+    testImplementation(libs.assertj)
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
