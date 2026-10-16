@@ -28,7 +28,7 @@ public class DefaultDuplicateFinder implements DuplicateFinder{
         return new Scan(minSize).run(root);
     }
 
-    /** État d'un scan unique : compteurs et erreurs ne fuient pas d'un appel à l'autre. */
+    /** Single-scan state: counters and errors do not leak across calls. */
     private class Scan {
 
         private final long minSize;
@@ -40,7 +40,7 @@ public class DefaultDuplicateFinder implements DuplicateFinder{
         }
 
         ScanResult run(Path root) throws IOException {
-            // Étape 1 : regroupement par taille, aucune lecture de contenu
+            // Step 1: group by size, no file content read
             Map<Long, List<Path>> bySize = walk(root);
 
             List<Group> groups = new ArrayList<>();
@@ -50,11 +50,11 @@ public class DefaultDuplicateFinder implements DuplicateFinder{
                 List<Path> candidates = entry.getValue();
                 if (candidates.size() < 2) continue;
 
-                // Étape 2 : hash des 4 premiers Ko
+                // Step 2: hash the first 4 KB
                 for (List<Path> partial : groupByHash(candidates, partialHasher).values()) {
                     if (partial.size() < 2) continue;
 
-                    // Étape 3 : hash complet sur les survivants
+                    // Step 3: full hash on the remaining candidates
                     groupByHash(partial, fullHasher).forEach((hash, files) -> {
                         if (files.size() > 1) {
                             groups.add(new Group(hash, size, files));

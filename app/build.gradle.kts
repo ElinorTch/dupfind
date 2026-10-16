@@ -17,7 +17,6 @@ repositories {
 }
 
 dependencies {
-    implementation(project(":core"))
     implementation(libs.picocli)
     annotationProcessor(libs.picocli.codegen)
     testImplementation(libs.junit)
