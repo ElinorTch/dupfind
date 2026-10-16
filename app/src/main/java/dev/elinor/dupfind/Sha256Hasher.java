@@ -1,4 +1,4 @@
-package dev.elinor.dupfind.core.hash;
+package dev.elinor.dupfind;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,9 +8,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HexFormat;
 
-public class Sha256Hasher implements Hasher {
-
-    private static final int BUFFER_SIZE = 8 * 1024;
+public class Sha256Hasher implements Hasher{
+    private static final int BUFFER_SIZE = 8192;
     private static final long WHOLE_FILE = -1L;
 
     private final long maxBytes;
@@ -26,7 +25,6 @@ public class Sha256Hasher implements Hasher {
     public static Hasher partial(long maxBytes) {
         return new Sha256Hasher(maxBytes);
     }
-
 
     @Override
     public String hash(Path path) throws IOException {
