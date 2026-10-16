@@ -1,4 +1,4 @@
-# dupfind
+# Dupfind
 
 A fast command-line tool to find duplicate files by content.
 
