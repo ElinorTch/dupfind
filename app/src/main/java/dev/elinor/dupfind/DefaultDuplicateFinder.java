@@ -70,7 +70,7 @@ public class DefaultDuplicateFinder implements DuplicateFinder{
         private Map<Long, List<Path>> walk(Path root) throws IOException {
             Map<Long, List<Path>> bySize = new HashMap<>();
 
-            Files.walkFileTree(root, new SimpleFileVisitor<Path>() {
+            Files.walkFileTree(root, new SimpleFileVisitor<>() {
                 @Override
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
                     if (attrs.isRegularFile() && attrs.size() >= minSize) {
