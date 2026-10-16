@@ -1,8 +1,6 @@
 package dev.elinor.dupfind;
 
 import picocli.CommandLine;
-import picocli.CommandLine.Command;
-
 
 public class Main implements Runnable {
     public static void main(String[] args) {
